@@ -3,7 +3,7 @@
 import os
 import shutil
 import sys
-import urllib
+import urllib.request
 import xbmc
 import xbmcaddon
 import xbmcgui,xbmcplugin
@@ -89,7 +89,7 @@ def Download(id,url,format,stack=False):
       subFile.write(f.read())
 
     xbmc.sleep(500)
-    xbmc.executebuiltin(('Extract("%s","%s")' % (zip,__temp__,)).encode('utf-8'), True)
+    xbmc.executebuiltin('Extract("%s","%s")' % (zip,__temp__,), True)
     for file in xbmcvfs.listdir(zip)[1]:
       file = os.path.join(__temp__, file)
       if (os.path.splitext( file )[1] in exts):
